@@ -12,8 +12,15 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 @Entity
+@Getter
+@Setter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
+
 public class Contrat implements Serializable {
 	
 
@@ -37,55 +44,6 @@ public class Contrat implements Serializable {
 
 	private float salaire;
 
-	public Contrat() {
-		super();
-	}
-	
-	public Contrat(Date dateDebut, String typeContrat, float salaire) {
-		this.dateDebut = dateDebut;
-		this.typeContrat = typeContrat;
-		this.salaire = salaire;
-	}
 
-
-	public Date getDateDebut() {
-		return dateDebut;
-	}
-
-	public void setDateDebut(Date dateDebut) {
-		this.dateDebut = dateDebut;
-	}
- 
-	public Long getReference() {
-		return reference;
-	}
-
-	public void setReference(Long reference) {
-		this.reference = reference;
-	}
-
-	public String getTypeContrat() {
-		return typeContrat;
-	}
-
-	public void setTypeContrat(String typeContrat) {
-		this.typeContrat = typeContrat;
-	}
-
-	public float getSalaire() {
-		return salaire;
-	}
-
-	public void setSalaire(float salaire) {
-		this.salaire = salaire;
-	}
-
-	public Employe getEmploye() {
-		return employe;
-	}
-
-	public void setEmploye(Employe employe) {
-		this.employe = employe;
-	}
  
 }
