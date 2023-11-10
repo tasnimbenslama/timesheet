@@ -1,0 +1,32 @@
+
+k	java:S1173"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÏàÈêúÿÿÿÿ
+Y
+java:S3655T"7Call "Optional#isPresent()" before accessing the value.(ø©ò‰ıÿÿÿÿ8š©äµ1
+H
+java:S1168"+Return an empty collection instead of null.(¥¹ï8±š©äµ1
+M
+java:S1135$"2Complete the task associated to this TODO comment.(æïºùÿÿÿÿ
+H
+java:S1135&"2Complete the task associated to this TODO comment.(ıí©á
+Q	java:S125)"<This block of commented-out lines of code should be removed.(±É¤Ï
+H
+java:S1135)"2Complete the task associated to this TODO comment.(±É¤Ï
+G
+java:S14813",Remove this unused "u_saved" local variable.(ÏàÈêúÿÿÿÿ
+M
+java:S11357"2Complete the task associated to this TODO comment.(æïºùÿÿÿÿ
+H
+java:S11359"2Complete the task associated to this TODO comment.(ıí©á
+Q	java:S125<"<This block of commented-out lines of code should be removed.(ÖÃ¨Ï
+H
+java:S1135<"2Complete the task associated to this TODO comment.(ÖÃ¨Ï
+M
+java:S1135F"2Complete the task associated to this TODO comment.(æïºùÿÿÿÿ
+H
+java:S1135H"2Complete the task associated to this TODO comment.(ıí©á
+Q	java:S125K"<This block of commented-out lines of code should be removed.(æ­°à
+H
+java:S1135K"2Complete the task associated to this TODO comment.(æ­°à
+>	java:S108V")Either remove or fill this block of code.(”ı¾
+;
+java:S1068"%Remove this unused "l" private field.(²Ù„¹
