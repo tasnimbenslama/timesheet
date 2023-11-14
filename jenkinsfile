@@ -1,6 +1,12 @@
 pipeline{
     
     agent any 
+environment {
+        NEXUS_URL = 'http://192.168.1.3:8081'
+        NEXUS_CREDENTIALS_ID = 'nexus-auth'
+       
+       
+    }
     
     stages {
         
@@ -49,27 +55,34 @@ pipeline{
                     
                 }
             }
-            stage('upload to nexus'){
-                
-                steps{
-                    
-                    script{
-                        
-                    nexusArtifactUploader artifacts: [
-                    [
-                    artifactId: 'timesheet-devops', 
-                    classifier: '',
-                    type: 'jar'
+
+  stage('Deploy to Nexus') {
+            steps {
+                script {
+                    // Nexus Repository Manager integration
+                    def nexusArtifactUploader = Artifactory.newMavenBuild()
+
+                    nexusArtifactUploader.deployer repo: 'new_repository', server: [
+                        id: "${NEXUS_CREDENTIALS_ID}",
+                        username: "${NEXUS_CREDENTIALS_ID}",
+                        password: credentials("${NEXUS_CREDENTIALS_ID}")
                     ]
-                    ],
-                    credentialsId: 'nexus-auth', 
-                    groupId:'tn.esprit.spring.services',
-                    nexusUrl: '192.168.1.3:8081',
-                    nexusVersion: 'nexus3',
-                    protocol: 'http',
-                    repository: 'new_repository',
-                    version: '1.0'                    }
+
+                    nexusArtifactUploader.deployPattern includes: '**/*'
+                    nexusArtifactUploader.deploy buildInfo: 'buildinfo'
                 }
             }
+        }
+    }
 }
+
+def readFileFromSCM(filePath) {
+    def scmVars = checkout scm
+    def fileContent = readFile "${scmVars.GIT_COMMIT}/${filePath}"
+    return fileContent
 }
+
+
+            }
+}
+
