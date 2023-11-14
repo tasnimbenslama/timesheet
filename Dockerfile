@@ -1,11 +1,11 @@
 FROM maven:3.8.4 as build
 COPY . .
-RUN mvn install -X
+RUN mvn install 
 
 FROM openjdk:11.0
 WORKDIR /app
 COPY --from=build /app/target/Uber.jar /app/
 EXPOSE 8082
-CMD ["java","-jar",Uber.jar"]
+CMD ["java","-jar","Uber.jar"]
  
 
