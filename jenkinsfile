@@ -62,7 +62,7 @@ pipeline{
                     type: 'jar'
                     ]
                     ],
-                    credentialsId: '', 
+                    credentialsId: 'nexus-auth', 
                     groupId:'tn.esprit.spring.services',
                     nexusUrl: '192.168.1.3:8081',
                     nexusVersion: 'nexus3',
