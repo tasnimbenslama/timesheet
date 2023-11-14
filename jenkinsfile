@@ -58,25 +58,30 @@ environment {
                 }
             }
 
-   stage('Deploy to Nexus') {
-            steps {
-                script {
-                    // Nexus Repository Manager integration
-                    def nexusArtifactUploader = Artifactory.newMavenBuild()
-
-                    nexusArtifactUploader.deployer repo: 'new_repository', server: [
-                        id: "${NEXUS_CREDENTIALS_ID}",
-                        username: "${NEXUS_CREDENTIALS_ID}",
-                        password: credentials("${NEXUS_CREDENTIALS_ID}")
+   stage('upload to nexus'){
+                
+                steps{
+                    
+                    script{
+                        
+                    nexusArtifactUploader artifacts: [
+                    [
+                    artifactId: 'timesheet-devops', 
+                    classifier: '',
+                    type: 'jar'
                     ]
-
-                    nexusArtifactUploader.deployPattern includes: '**/*'
-                    nexusArtifactUploader.deploy buildInfo: 'buildinfo'
+                    ],
+                    credentialsId: 'nexus-auth', 
+                    groupId:'tn.esprit.spring.services',
+                    nexusUrl: '192.168.1.3:8081',
+                    nexusVersion: 'nexus3',
+                    protocol: 'http',
+                    repository: 'new_repository',
+                    version: '1.0'                    }
                 }
-            }
-        }
 
 
             }
+}
 }
 
