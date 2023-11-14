@@ -73,14 +73,6 @@ environment {
                 }
             }
         }
-    
-
-
-def readFileFromSCM(filePath) {
-    def scmVars = checkout scm
-    def fileContent = readFile "${scmVars.GIT_COMMIT}/${filePath}"
-    return fileContent
-}
 
 
             }
