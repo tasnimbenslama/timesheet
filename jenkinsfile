@@ -56,7 +56,7 @@ environment {
                 }
             }
 
-  stage('Deploy to Nexus') {
+     stage('Deploy to Nexus') {
             steps {
                 script {
                     // Nexus Repository Manager integration
@@ -73,7 +73,6 @@ environment {
                 }
             }
         }
-
 
             }
 }
