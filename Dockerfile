@@ -1,6 +1,6 @@
 FROM maven as build
 WORKDIR /app
-COPY ..
+COPY . .
 RUN mnv install
 
 FROM openjdk:11.0
