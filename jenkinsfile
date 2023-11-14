@@ -1,38 +1,48 @@
-pipeline {
-    agent any
-
+pipeline{
+    
+    agent any 
+    
     stages {
-        stage('Build') {
-            steps {
-                // Compilez votre application ici
-                sh 'mvn clean package' // Exemple pour une application Java avec Maven
+        
+        stage('Git Checkout'){
+            
+            steps{
+                
+                script{
+                    
+                    git branch: 'main', url: 'https://github.com/vikash-kumar01/mrdevops_javaapplication.git'
+                }
             }
         }
-
-        stage('Test') {
-            steps {
-                // Exécutez des tests unitaires ou d'intégration ici
-                sh 'mvn test' // Exemple pour les tests unitaires avec Maven
+        stage('UNIT testing'){
+            
+            steps{
+                
+                script{
+                    
+                    sh 'mvn test'
+                }
             }
         }
-
-        stage('Deploy') {
-            steps {
-                // Déployez votre application sur votre environnement cible (par exemple, serveur de préproduction ou production)
-                sh 'kubectl apply -f deployment.yaml' // Exemple pour un déploiement Kubernetes
+        stage('Integration testing'){
+            
+            steps{
+                
+                script{
+                    
+                    sh 'mvn verify -DskipUnitTests'
+                }
             }
         }
-    }
-
-    post {
-        success {
-            // Actions à effectuer en cas de succès
-            echo 'Le pipeline a réussi!'
+        stage('Maven build'){
+            
+            steps{
+                
+                script{
+                    
+                    sh 'mvn clean install'
+                }
+            }
         }
-        failure {
-            // Actions à effectuer en cas d'échec
-            echo 'Le pipeline a échoué!'
-        }
-    }
 }
-
+}
