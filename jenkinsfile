@@ -58,7 +58,7 @@ pipeline{
                     nexusArtifactUploader artifacts: [
                     [
                     artifactId: 'timesheet-devops', 
-                    classifier: '', file: 'target',
+                    classifier: '',
                     type: 'jar'
                     ]
                     ],
