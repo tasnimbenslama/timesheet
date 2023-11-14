@@ -1,6 +1,6 @@
 FROM maven:3.8.4 as build
 COPY . .
-RUN mvn install 
+RUN mvn clean install 
 
 FROM openjdk:11.0
 WORKDIR /app
