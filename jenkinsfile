@@ -56,7 +56,7 @@ pipeline{
                 
                 script{
                     
-                    sh 'docker-compose up'
+                    sh '/full/path/to/docker-compose up -d'
                 }
             }
         }
